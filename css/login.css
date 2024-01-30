@@ -1,0 +1,77 @@
+.login-container {
+  background: #BCD8E9;
+  height: 100vh;
+  width: 100%;
+}
+
+.login-row {
+  padding: 0;
+  margin: 0;
+}
+
+
+.card-column {
+  margin-top: 8vw;
+}
+
+
+.card-column .card {
+  border-radius: 25px;
+}
+
+.span-box {
+  position: absolute;
+  background: #1D74A6;
+  height: 6vw;
+  width: 100%;
+  padding: 0;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  margin: 0;
+}
+
+.span-box img {
+  width: 5vw;
+  height: 5vw;
+  margin-left: 1vw;
+  margin-top: .5vw;
+  z-index: 1000;
+}
+
+.span-box .span-txt {
+  position: absolute;
+  left: 8vw;
+  top: 2vw;
+  color: white;
+}
+
+
+.form-group {
+  width: 60%;
+}
+
+.form-group label {
+  color: #1D74A6;
+  font-weight: bold;
+}
+
+.btn-group {
+  width: 100%;
+}
+
+.btn-login {
+  margin-left: 5.4vw;
+  background: #1D74A6 !important;
+  color: white;
+}
+
+.link {
+  color: #1D74A6 !important;
+  font-size: 0.7vw;
+  margin-left: 5.2vw;
+}
+
+.link:hover {
+  text-decoration: underline !important;
+  cursor: pointer;
+}
