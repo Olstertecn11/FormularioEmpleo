@@ -11,44 +11,17 @@ body {
 }
 
 .img-profile-card {
-  height: 100%;
   width: 100%;
   object-fit: cover;
+  height: 350px;
 }
 
-.navbar {
-  background: #1D74A6 !important;
+.card-container {
+  max-height: 350px;
 }
 
-.nav-link {
-  color: white !important;
-  transition: .35s;
-}
-
-.nav-link:hover {
-  transition: .35s;
-  text-decoration: underline;
-  text-underline-offset: 5px;
-  text-decoration-thickness: 2px;
-}
-
-.navbar-brand {
-  color: white !important;
-}
-
-.btn-csesion {
-  background: #D4AB44;
-  color: white;
-}
-
-
-.span-line {
-  background: #D4AB44;
-  height: 0.4vw;
-  position: absolute;
-  width: 100%;
-  top: 9%;
-  left: 0;
+.card-container .row .col-md-5 {
+  height: auto;
 }
 
 
@@ -58,4 +31,36 @@ body {
 .card-container .row .col-md-5,
 .img-profile-card {
   border-radius: 25px;
+}
+
+
+.card-container .row .col-md-7 .card-body {
+  height: 100%;
+}
+
+.buttons-box {
+  position: absolute;
+  bottom: 4%;
+}
+
+.skills-box {
+  background: #c9dbe68a;
+  padding: 1vw;
+  border-radius: 6px;
+  height: 50%;
+
+}
+
+
+.btn-gold {
+  background: #cc9f2d;
+}
+
+.btn-blue {
+  background: #1D74A6;
+}
+
+.btn-blue,
+.btn-gold {
+  color: white;
 }

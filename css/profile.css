@@ -1,0 +1,99 @@
+.img-profile-cv {
+  width: 10vw;
+  object-fit: cover;
+  border-radius: 20vw;
+  height: 10vw;
+  margin-top: 1vw;
+  margin-left: 3vw;
+}
+
+
+.row-header{
+  height: 12vw;
+  background: #36383E;
+}
+
+.row-haeder .col-md-5, .row-header .col-md-9{
+  height: auto;
+  background: #36383E;
+}
+
+
+.title-name{
+  color: white;
+}
+
+.subtitle-job{
+  color: #c3c1c1;
+}
+
+
+.title-box{
+  margin-top: 4vw;
+}
+
+.row-content{
+  height: 65vw !important;
+}
+
+.row-content div{
+  height: auto;
+}
+
+.row-content .col-md-5{
+  background: #E9E2DD;
+}
+
+.row-content .col-md-7{
+  background: white;
+  border-right: 1px solid #E9E2DD;
+}
+
+
+.contact-box{
+  margin-top: 2vw;
+  margin-left: 4vw;
+}
+
+.contact-box h4{
+  color: #36383E;
+  font-weight: bold;
+}
+
+.contact-box li{
+  list-style: none;
+}
+
+.contact-box li:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+.box-educ-media{
+  padding-left: 1vw;
+  border-left: 2px solid #36383E;
+}
+
+.content-section{
+  margin-top: 2vw;
+  margin-left: 2vw;
+}
+
+.content-section h4{
+  color: #36383E;
+  font-weight: bold;
+}
+
+
+.personal-details ul li p{
+  color: #36383E;
+  font-weight: 500;
+}
+
+
+
+
+
+
+
