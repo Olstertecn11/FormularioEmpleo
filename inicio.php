@@ -35,7 +35,8 @@ $mysqli->close();
     <title>Inicio</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <link rel="stylesheet" href="./css/inicio.css">
+    <link rel="stylesheet" href="./css/inicio.css">
+    <link rel="stylesheet" href="./css/navbar.css">
     <style>
     
     </style>
@@ -60,14 +61,16 @@ $mysqli->close();
                 <div class="card-body">
                   <h4 class="card-title"><?= $dato['des_nombre'] ?></h4>
                   <p class="card-text text-justify text-muted font-italic"><?= $dato['fec_solicitud'] ?></p>
-                  <p class="card-text text-justify "><?= $dato['des_skills'] ?></p>
+                  <p class="card-text text-justify skills-box"><?= $dato['des_skills'] ?></p>
                   <p class="card-text"><small class="text-muted"><?= $dato['des_puesto_aplicado'] ?></small></p>
-                  <button class="btn btn-warning">
-                    Descargar CV
-                  </button>
-                  <button class="btn btn-success">
-                    Visitar Perfil
-                  </button>
+                  <div class="buttons-box">
+                    <button class="btn btn-gold">
+                      Descargar CV
+                    </button>
+                    <a href="./profile.php?cod_id=<?= $dato['cod_id'] ?>" class="btn btn-blue">
+                      Visitar Perfil
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
