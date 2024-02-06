@@ -64,10 +64,7 @@ $mysqli->close();
                   <p class="card-text text-justify skills-box"><?= $dato['des_skills'] ?></p>
                   <p class="card-text"><small class="text-muted"><?= $dato['des_puesto_aplicado'] ?></small></p>
                   <div class="buttons-box">
-                    <button class="btn btn-gold">
-                      Descargar CV
-                    </button>
-                    <a href="./profile.php?cod_id=<?= $dato['cod_id'] ?>" class="btn btn-blue">
+                    <a href="./profile.php?cod_id=<?= $dato['cod_id'] ?>" class="btn btn-blue ">
                       Visitar Perfil
                     </a>
                   </div>

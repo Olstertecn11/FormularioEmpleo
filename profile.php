@@ -47,10 +47,15 @@ $mysqli->close();
   <body>
     <!-- <p>Hola de nuevo, <?= $_SESSION['userName'] ?> !!!</p> -->
 
-    <div class="container mx-auto" style="margin-top: 10vw;">
-      <div class="row mx-auto">
+    <div class="container mt-4">
+      <div class="row">
+        <button class="btn btn-success" id="btn_export">Exportar</button>
+      </div>
+    </div>
+    <div class="container mx-auto" style="margin-top: 10vw;" >
+      <div class="row mx-auto" >
         <?php foreach ($datos as $dato) : ?>
-        <div class="col-md-12 mb-3 mx-auto">
+        <div class="col-md-12 mb-3 mx-auto" id="pdf">
           <div class="card mb-3 mx-auto " style="max-width: 940px;">
             <div class="row g-0 row-header">
               <div class="col-md-5">
@@ -154,6 +159,8 @@ $mysqli->close();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <script src="./js/profile.js"></script>
     <script src="./js/events.js"></script>
   </body>
 
