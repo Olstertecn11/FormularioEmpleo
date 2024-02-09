@@ -9,7 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $apellido = $_POST['apellido'];
     $correo = $_POST['correo'];
     $usuario = $_POST['usuario'];
-    $contra = $_POST['contra'];        // Verificar si los datos no están vacíos
+    $pass = $_POST['contra'];        // Verificar si los datos no están vacíos
+    $contra = password_hash($pass, PASSWORD_DEFAULT);
         if(!empty($nombre) && !empty($apellido) && !empty($correo) && !empty($usuario) && !empty($contra)) {
             $usermodel->insertUser($nombre, $apellido, $correo, $usuario, $contra);
         } else {

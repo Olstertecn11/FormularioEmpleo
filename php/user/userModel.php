@@ -11,6 +11,8 @@ require('./../var.php');
             VALUES ('$nombre', '$apellido', '$correo', '$usuario', '$contra')";
     if ($this->conn->query($sql) === TRUE) {
         echo "Registro insertado correctamente.";
+        header("Location: ./../../panel.php");
+        exit(); 
     } else {
         echo "Error al insertar registro: " . $this->conn->error;
     }

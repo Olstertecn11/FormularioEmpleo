@@ -1,0 +1,17 @@
+.btn-gold {
+  background: #cc9f2d;
+}
+
+.btn-blue {
+  background: #1D74A6;
+}
+
+.btn-blue:hover{
+  color: white;
+}
+
+
+.btn-blue,
+.btn-gold {
+  color: white;
+}

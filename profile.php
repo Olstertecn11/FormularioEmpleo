@@ -9,7 +9,7 @@ if (!isset($_SESSION['auth']) || !isset($_GET['cod_id'])) {
 
 $codId = $_GET['cod_id'];
 
-$mysqli = new mysqli('localhost', 'root', '', 'bolsaempleo');
+$mysqli = new mysqli('localhost', 'ovggt_ovggt_formulario_admin', 'wlan.in3.', 'ovggt_formulario');
 
 if ($mysqli->connect_error) {
   die('Error de conexión: ' . $mysqli->connect_error);
@@ -38,6 +38,7 @@ $mysqli->close();
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" href="./css/profile.css">
       <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/global.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <header class="header">
     </header>
@@ -49,10 +50,12 @@ $mysqli->close();
 
     <div class="container mt-4">
       <div class="row">
-        <button class="btn btn-success" id="btn_export">Exportar</button>
+        <div class="col-md-4 ml-auto">
+          <button class="btn btn-success" id="btn_export">Exportar en PDF </button>
+        </div>
       </div>
     </div>
-    <div class="container mx-auto" style="margin-top: 10vw;" >
+    <div class="container mx-auto" style="margin-top: 4vw;" >
       <div class="row mx-auto" >
         <?php foreach ($datos as $dato) : ?>
         <div class="col-md-12 mb-3 mx-auto" id="pdf">

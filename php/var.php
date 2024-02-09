@@ -3,17 +3,17 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
 class Database{
-  private $db_host = 'localhost';
-  private $db_user = 'root';
-  private $db_password = '';
-  private $db_schema = 'bolsaempleo';
-  public $conn = '';
-  //
   // private $db_host = 'localhost';
-  // private $db_user = 'ovggt_formulario_admin';
-  // private $db_password = 'wlan.in3.';
-  // private $db_schema = 'ovggt_formulario';
+  // private $db_user = 'root';
+  // private $db_password = '';
+  // private $db_schema = 'bolsaempleo';
   // public $conn = '';
+  // //
+  private $db_host = 'localhost';
+  private $db_user = 'ovggt_ovggt_formulario_admin';
+  private $db_password = 'wlan.in3.';
+  private $db_schema = 'ovggt_formulario';
+  public $conn = '';
 
   public function __construct()
   {

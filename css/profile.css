@@ -92,7 +92,10 @@
 }
 
 
-
+#btn_export{
+  position: absolute;
+  right: 6vw;
+}
 
 
 

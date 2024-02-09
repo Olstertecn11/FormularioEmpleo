@@ -1,6 +1,8 @@
 <?php
 
-$mysqli = new mysqli('localhost', 'root', '', 'bolsaempleo');
+// $mysqli = new mysqli('localhost', 'root', '', 'bolsaempleo');
+
+$mysqli = new mysqli('localhost', 'ovggt_ovggt_formulario_admin', 'wlan.in3.', 'ovggt_formulario');
 
 if ($mysqli->connect_error) {
     die('Error de conexión: ' . $mysqli->connect_error);
