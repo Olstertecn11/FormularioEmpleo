@@ -8,8 +8,8 @@ if (!isset($_SESSION['auth'])) {
     exit;
 }
 
-$mysqli= new mysqli('localhost', 'ovggt_ovggt_formulario_admin', 'wlan.in3.', 'ovggt_formulario');
-// $mysqli = new mysqli('localhost', 'root', '', 'bolsaempleo');
+// $mysqli= new mysqli('localhost', 'ovggt_ovggt_formulario_admin', 'wlan.in3.', 'ovggt_formulario');
+$mysqli = new mysqli('localhost', 'root', '', 'bolsaempleo');
 mysqli_set_charset($mysqli, "utf8");
 
 if ($mysqli->connect_error) {
@@ -113,7 +113,7 @@ $mysqli->close();
         <div class="row mx-auto">
             <?php foreach ($datos as $dato) : ?>
                 <div class="col-md-12 mb-3 mx-auto">
-                    <div class="card mb-3 mx-auto card-container" style="max-width: 740px;">
+                    <div class="card mb-3 mx-auto card-container" style="max-width: 800px;">
                         <div class="row g-0">
                             <div class="col-md-5">
                                 <img class="img-profile-card rounded-start" src="<?= $dato['bl_foto'] ?>"

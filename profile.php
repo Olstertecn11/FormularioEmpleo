@@ -9,7 +9,8 @@ if (!isset($_SESSION['auth']) || !isset($_GET['cod_id'])) {
 
 $codId = $_GET['cod_id'];
 
-$mysqli = new mysqli('localhost', 'ovggt_ovggt_formulario_admin', 'wlan.in3.', 'ovggt_formulario');
+$mysqli = new mysqli('localhost', 'root', '', 'bolsaempleo');
+// $mysqli = new mysqli('localhost', 'ovggt_ovggt_formulario_admin', 'wlan.in3.', 'ovggt_formulario');
 
 if ($mysqli->connect_error) {
   die('Error de conexión: ' . $mysqli->connect_error);
@@ -48,13 +49,17 @@ $mysqli->close();
   <body>
     <!-- <p>Hola de nuevo, <?= $_SESSION['userName'] ?> !!!</p> -->
 
-    <div class="container mt-4">
-      <div class="row">
-        <div class="col-md-4 ml-auto">
-          <button class="btn btn-success" id="btn_export">Exportar en PDF </button>
-        </div>
+
+<div class="container mt-4 actions-buttons-container">
+  <div class="row">
+    <div class="col-md-8 ml-auto">
+      <div class="p-2">
+        <button class="btn btn-success" id="btn_export_pdf">Guardar en PDF</button>
+        <button class="btn btn-warning ml-4 text-white" id="btn_print_pdf">Imprimir</button>
       </div>
     </div>
+  </div>
+</div>
     <div class="container mx-auto" style="margin-top: 4vw;" >
       <div class="row mx-auto" >
         <?php foreach ($datos as $dato) : ?>
