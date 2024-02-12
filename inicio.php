@@ -93,6 +93,7 @@ $mysqli->close();
         <div class="col-md-3">
           <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class=" p-4 form-group">
               <select class="form-control" id="exampleFormControlSelect1" onchange="filterChange(event)">
+                <option value="0">Buscar por Fechas</option>
                 <option value="1">Buscar por Nombre</option>
                 <option value="2">Buscar por Puesto</option>
                 <option value="3">Ver Todos</option>
@@ -102,6 +103,8 @@ $mysqli->close();
         <div class="col-md-3">
           <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class=" p-4 form-group">
             <input type="text" name="nombre" placeholder="Introduce el nombre" id="txt_filter" class="form-control">
+            <input type="date" name="date1" id="date1">
+            <input type="date" name="date2" id="date2">
             <button type="submit" name="filtrar" id="btn_filter" class="btn btn-blue mt-2">Filtrar</button>
           </form>
         </div>
@@ -140,8 +143,18 @@ $mysqli->close();
     </div>
 
 <script>
+
+document.getElementById("txt_filter").style.display = "none";
 function filterChange(e){
   const _option = e.target.value;
+  if(_option == "0"){
+    document.getElementById("txt_filter").style.display = "none";
+    ["date1", "date2"].forEach((item)=> document.getElementById(item).display = 'block');
+    // document.getElementById("txt_filter").style.display = "none";
+    return;
+  }
+
+  ["date1", "date2"].forEach((item)=> document.getElementById(item).display = 'none');
   if(_option == "3"){
     document.getElementById("txt_filter").style.display = "none";
     document.getElementById("btn_filter").innerText = "Ver Todo"
