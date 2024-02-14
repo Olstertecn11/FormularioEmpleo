@@ -75,3 +75,31 @@
   text-decoration: underline !important;
   cursor: pointer;
 }
+
+
+
+@media screen and (max-width: 991px) and (orientation:portrait){
+  .span-box{
+    height: 18vw;
+  }
+
+  .span-txt{
+    left: 21vw !important;
+    top: 3vw !important;
+  }
+
+  .span-box img{
+    width: 12vw;
+    height: 12vw;
+    margin-left: 5vw;
+    margin-top: 2.5vw;
+  }
+
+  .form-group{
+    width: 90%;
+  }
+
+  .link{
+    font-size: 3vw;
+  }
+}

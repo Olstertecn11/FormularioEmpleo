@@ -2,6 +2,24 @@ body {
   background: #BCD8E9;
 }
 
+.check-container{
+  padding-left: 3vw;
+}
+
+.check-container label{
+  font-size: 1.2vw;
+  font-weight: bold;
+  color: #1D74A6;
+}
+
+
+.check-container label:hover{
+  cursor: pointer;
+}
+
+.filter_container{
+  display: none;
+}
 
 
 .thumbnail {
@@ -51,6 +69,53 @@ body {
 
 }
 
+
+
+
+@media screen and (max-width: 991px) and (orientation:portrait){
+  .check-container{
+    padding: 0vw 20vw;
+  }
+
+  .check-container label{
+    font-size: 5vw;
+  }
+
+  .img-profile-card{
+    width: 50%;
+    height: 140px;
+    margin-left: 2vw;
+    margin-top: 2vw;
+  }
+    
+
+  .card-container, .card-container .row{
+    max-height: 600px;
+    height: 100% !important;
+    height: 100% !important;
+
+  }
+
+  .card-container .row .col-md-7{
+    display: table;
+  }
+
+  .skills-box{
+    height: 40vw;
+    overflow-y: auto;
+    padding: 3vw;
+  }
+
+
+
+  .col-content{
+    height: 150vw !important;
+  }
+
+  
+  
+
+}
 
 
 

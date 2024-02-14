@@ -1,10 +1,19 @@
 
 let txt_filter = document.getElementById('txt_filter');
 let btn_filter = document.getElementById('btn_filter');
+let filter_container = document.querySelector('.filter_container');
 let cmb_dates = ['date1', 'date2'];
 let _option = document.getElementById('_option');
 
 document.addEventListener('DOMContentLoaded', _config_filters, false);
+document.getElementById('check').addEventListener('change', (event) => {
+  if (event.target.checked) {
+    filter_container.style.display = 'block';
+  }
+  else {
+    filter_container.style.display = 'none';
+  }
+});
 
 
 function _config_filters() {
