@@ -12,6 +12,10 @@ body {
   color: #1D74A6;
 }
 
+#check{
+  transform: scale(1.5);
+}
+
 
 .check-container label:hover{
   cursor: pointer;
@@ -113,7 +117,10 @@ body {
   }
 
   
-  
+
+  #check{
+    transform: scale(1.5);
+  } 
 
 }
 
