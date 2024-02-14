@@ -1,4 +1,5 @@
 
+
 <?php
 
 session_start();
@@ -8,61 +9,69 @@ if (!isset($_SESSION['auth'])) {
     exit;
 }
 
-// $mysqli= new mysqli('localhost', 'ovggt_ovggt_formulario_admin', 'wlan.in3.', 'ovggt_formulario');
-$mysqli = new mysqli('localhost', 'root', '', 'bolsaempleo');
-mysqli_set_charset($mysqli, "utf8");
-
-if ($mysqli->connect_error) {
-    die('Error de conexión: ' . $mysqli->connect_error);
+function conectarBD() {
+    $mysqli = new mysqli('localhost', 'root', '', 'bolsaempleo');
+    if ($mysqli->connect_error) {
+        die('Error de conexión: ' . $mysqli->connect_error);
+    }
+    mysqli_set_charset($mysqli, "utf8");
+    return $mysqli;
 }
 
+function obtenerFormulariosEmpleo($mysqli, $sql) {
+    $datos = array();
+    $resultado = $mysqli->query($sql);
+
+    if ($resultado) {
+        while ($fila = $resultado->fetch_assoc()) {
+            $datos[] = $fila;
+        }
+    } else {
+        echo "Error en la consulta: " . $mysqli->error;
+    }
+
+    return $datos;
+}
+
+$mysqli = conectarBD();
 $datos = array();
+$sql = "SELECT * FROM tbl_form_empleo";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['filtrar'])) {
-  if (isset($_POST['nombre'])) {
-    $nombre_a_filtrar = trim($_POST['nombre']); // Obtener el nombre para filtrar
-    if (!empty($nombre_a_filtrar)) {
-      $sql = "SELECT * FROM tbl_form_empleo WHERE des_nombre LIKE '%$nombre_a_filtrar%'";
-    } else {
-      $sql = "SELECT * FROM tbl_form_empleo";
+    if(isset($_POST['option'])) {
+        $option = $_POST['option'];
+        if ($option === "0") {
+          if (isset($_POST['date1']) && isset($_POST['date2'])) {
+            // $date1 = $_POST['date1']." 00:00:00";
+            // $date2 = $_POST['date2']." 00:00:00";
+            // $date1 = DateTime::createFromFormat('m/d/Y h:i A', $date1)->format('Y-m-d H:i:s');
+            $date1 = strftime('%Y-%m-%d %H:%M:%S', strtotime(mysqli_real_escape_string($mysqli,$_POST['date1'])));
+            $date2 = strftime('%Y-%m-%d %H:%M:%S', strtotime(mysqli_real_escape_string($mysqli,$_POST['date2'])));
+            // $date2 = DateTime::createFromFormat('m/d/Y h:i A', $date2)->format('Y-m-d H:i:s');
+            $sql = "SELECT * FROM tbl_form_empleo WHERE fec_solicitud BETWEEN '$date1' AND '$date2'";
+          }
+          else {
+            $sql = "SELECT * FROM tbl_form_empleo WHERE cod_id = 1";
+          }
+        } elseif ($option === "1") {
+          if (isset($_POST['nombre'])) {
+            $nombre_a_filtrar = trim($_POST['nombre']);
+            if (!empty($nombre_a_filtrar)) {
+              $sql = "SELECT * FROM tbl_form_empleo WHERE des_nombre LIKE '%$nombre_a_filtrar%'";
+            }
+          }
+        } elseif ($option === "2") {
+          if (isset($_POST['puesto'])) {
+            $nombre_a_filtrar = trim($_POST['puesto']);
+            if (!empty($nombre_a_filtrar)) {
+              $sql = "SELECT * FROM tbl_form_empleo WHERE des_puesto_aplicado LIKE '%$nombre_a_filtrar%'";
+            }
+          }
+        }
     }
-  } else {
-    if (isset($_POST['puesto'])) {
-      $nombre_a_filtrar = trim($_POST['puesto']); // Obtener el nombre para filtrar
-      if (!empty($nombre_a_filtrar)) {
-        $sql = "SELECT * FROM tbl_form_empleo WHERE  des_puesto_aplicado LIKE '%$nombre_a_filtrar%'";
-      } else {
-        $sql = "SELECT * FROM tbl_form_empleo";
-      }
-    }
-    else{
-      $sql = "SELECT * FROM tbl_form_empleo";
-    }
-  }
-
-
-  $resultado = $mysqli->query($sql);
-
-  if ($resultado) {
-    while ($fila = $resultado->fetch_assoc()) {
-      $datos[] = $fila;
-    }
-  } else {
-    echo "Error en la consulta: " . $mysqli->error;
-  }
-} else {
-  $sql = "SELECT * FROM tbl_form_empleo";
-  $resultado = $mysqli->query($sql);
-
-  if ($resultado) {
-    while ($fila = $resultado->fetch_assoc()) {
-      $datos[] = $fila;
-    }
-  } else {
-    echo "Error en la consulta: " . $mysqli->error;
-  }
 }
 
+$datos = obtenerFormulariosEmpleo($mysqli, $sql);
 $mysqli->close();
 ?>
 
@@ -103,8 +112,9 @@ $mysqli->close();
         <div class="col-md-3">
           <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class=" p-4 form-group">
             <input type="text" name="nombre" placeholder="Introduce el nombre" id="txt_filter" class="form-control">
-            <input type="date" name="date1" id="date1">
-            <input type="date" name="date2" id="date2">
+            <input type="date" name="date1" id="date1" class="form-control mt-2">
+            <input type="date" name="date2" id="date2" class="form-control mt-2">
+            <input type="text" name="option" id="_option" value="0"  style="display: none;">
             <button type="submit" name="filtrar" id="btn_filter" class="btn btn-blue mt-2">Filtrar</button>
           </form>
         </div>
@@ -142,37 +152,12 @@ $mysqli->close();
         </div>
     </div>
 
-<script>
 
-document.getElementById("txt_filter").style.display = "none";
-function filterChange(e){
-  const _option = e.target.value;
-  if(_option == "0"){
-    document.getElementById("txt_filter").style.display = "none";
-    ["date1", "date2"].forEach((item)=> document.getElementById(item).display = 'block');
-    // document.getElementById("txt_filter").style.display = "none";
-    return;
-  }
-
-  ["date1", "date2"].forEach((item)=> document.getElementById(item).display = 'none');
-  if(_option == "3"){
-    document.getElementById("txt_filter").style.display = "none";
-    document.getElementById("btn_filter").innerText = "Ver Todo"
-    return;
-  }
-  else{
-    document.getElementById("txt_filter").style.display = "block";
-    document.getElementById("btn_filter").innerText = "Filtrar"
-  }
-  document.getElementById("txt_filter").placeholder = _option == "1" ?  'Ingrese el nombre' : 'Ingrese el Puesto';
-  document.getElementById("txt_filter").name = _option == "1" ?  'nombre' : 'puesto';
-}
-
-</script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/inicio.js"></script>
     <script src="./js/events.js"></script>
 </body>
 
