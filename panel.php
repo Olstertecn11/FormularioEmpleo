@@ -56,6 +56,7 @@ if (!isset($_SESSION['auth'])) {
                         <th>Apellido</th>
                         <th>Correo</th>
                         <th>Usuario</th>
+                        <th>Acciones</th>
                         <!-- <th>Contraseña</th> No se recomienda mostrar la contraseña en una tabla pública -->
                     </tr>
                 </thead>
@@ -88,6 +89,7 @@ if (!isset($_SESSION['auth'])) {
                             echo "<td>" . $row["usr_apellido"] . "</td>";
                             echo "<td>" . $row["usr_correo"] . "</td>";
                             echo "<td>" . $row["usr_usuario"] . "</td>";
+                            echo "<td>" . "<a class='btn btn-danger text-white'>Eliminar</a>" . "</td>";
                             // No se recomienda mostrar la contraseña en una tabla pública
                             // echo "<td>" . $row["usr_contra"] . "</td>";
                             echo "</tr>";
