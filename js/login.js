@@ -19,6 +19,7 @@ function login() {
     .catch(function(error) {
       console.error('Error en la solicitud:', error);
     });
+
 }
 
 
@@ -44,31 +45,31 @@ function request(method, url, params) {
 
 function loginController(interruptResponse) {
   if (interruptResponse == 1) {
+    localStorage.setItem('user', $('#username').val());
+    save('Ingreso a la aplicacion', 'Login');
     Swal.fire({
-      title: "Bienvenido",
-      text: "Bienvenido al sistema",
-      icon: "success",
+      title: 'Bienvenido',
+      text: 'Bienvenido al sistema',
+      icon: 'success',
       showCloseButton: false
     });
     setTimeout(() => {
-      window.location.href = "./inicio.php"
+      window.location.href = './inicio.php';
     }, 1000);
-    // window.location.href = "./inicio.html"
-  }
-  if (interruptResponse == 2) {
+  } else if (interruptResponse == 2) {
     Swal.fire({
-      title: "Error",
-      text: "Contraseña o Usuario incorrectos",
-      icon: "error"
+      title: 'Error',
+      text: 'Contraseña o Usuario incorrectos',
+      icon: 'error'
     });
     $('#username').val('');
     $('#password').val('');
-  }
-  if (interruptResponse == 3) {
+  } else if (interruptResponse == 3) {
     Swal.fire({
-      title: "Error",
-      text: "Debe llenar todos los campos del formulario",
-      icon: "error"
+      title: 'Error',
+      text: 'Debe llenar todos los campos del formulario',
+      icon: 'error'
     });
   }
 }
+

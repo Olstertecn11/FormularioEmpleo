@@ -2,9 +2,15 @@
 
 
 
+function logout() {
+  save('Saliendo de la aplicacion', 'Logout');
+  window.location.href = 'signup.php';
+}
+
 window.onload = () => {
   loadHeader();
 }
+
 
 
 

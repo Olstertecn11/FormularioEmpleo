@@ -41,10 +41,8 @@ if (!isset($_SESSION['auth'])) {
                     <label for="contra">Contraseña:</label><br>
                     <input type="password" id="contra" name="contra" required class="form-control"><br>
 
-                    <input type="submit" value="Enviar" class="btn btn-blue btn-block">
+                    <input type="submit" value="Enviar" class="btn btn-blue btn-block" onclick="saveUser()">
                 </form>
-
-
             </div>
         </div>
         <div class="col-md-6 mx-auto">
@@ -68,7 +66,11 @@ if (!isset($_SESSION['auth'])) {
                     $password = "";
                     $dbname = "bolsaempleo";
 
-                    // Crear conexión
+                    // $servername = "localhost"
+                    // $username = "ovggt_ovggt_formulario_admin";
+                    // $password = "wlan.in3.";
+                    // $dbname = "ovggt_formulario";
+
                     $conn = new mysqli($servername, $username, $password, $dbname);
 
                     // Verificar la conexión
@@ -108,4 +110,11 @@ if (!isset($_SESSION['auth'])) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./js/bitacora.js"></script>
 <script src="./js/events.js"></script>
+<script>
+                    function saveUser(){
+                      save('Registrando usuario nuevo', 'Operacion realizada desde panel de control');
+                    }
+</script>
+
